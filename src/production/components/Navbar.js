@@ -1,9 +1,5 @@
 const Navbar = () => {
 
-    const divStyle = {
-        backgroundColor: "#e3f2fd",
-      };
-
     return (
 
         <nav className="navbar navbar-light" style={{backgroundColor: " #d1e0e0"}}>

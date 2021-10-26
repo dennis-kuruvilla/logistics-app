@@ -9,7 +9,7 @@ const ProdApp = () => {
 
     useEffect(() => {
         axios
-          .get('http://192.168.1.11:3001/products')
+          .get('http://192.168.1.5:3001/products')
           .then(response => {
             console.log('promise fulfilled')
             setNotes(response.data)
