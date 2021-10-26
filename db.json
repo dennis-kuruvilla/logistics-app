@@ -1,0 +1,32 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "EZTA Lap v1",
+        "description": "Smooth and lightweight laptop perfect for WFH",
+        "price": 200,
+        "quantity": 122
+      },
+      {
+        "id": 2,
+        "name": "EZTA Lap v2",
+        "description": "another Smooth and lightweight laptop perfect for WFH",
+        "price": 203,
+        "quantity": 124
+      },
+      {
+        "id": 3,
+        "name": "EZTA Lap v3",
+        "description": "yet another Smooth and lightweight laptop perfect for WFH",
+        "price": 204,
+        "quantity": 121
+      },
+      {
+        "id": 4,
+        "name": "EZTA Lap v4",
+        "description": "the only Smooth and lightweight laptop perfect for WFH",
+        "price": 205,
+        "quantity": 122
+      }
+    ]
+  }
