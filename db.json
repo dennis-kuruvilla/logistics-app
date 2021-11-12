@@ -1,32 +1,74 @@
 {
-    "products": [
-      {
-        "pid": 1,
-        "name": "A Lap v1",
-        "description": "Smooth and lightweight laptop perfect for WFH",
-        "price": 200,
-        "quantity": 122
-      },
-      {
-        "pid": 2,
-        "name": "XY Lap v2",
-        "description": "another Smooth and lightweight laptop perfect for WFH",
-        "price": 203,
-        "quantity": 124
-      },
-      {
-        "pid": 3,
-        "name": "CD Lap v3",
-        "description": "yet another Smooth and lightweight laptop perfect for WFH",
-        "price": 204,
-        "quantity": 121
-      },
-      {
-        "pid": 4,
-        "name": "FG Lap v4",
-        "description": "the only Smooth and lightweight laptop perfect for WFH",
-        "price": 205,
-        "quantity": 122
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "name": "A Lap v1",
+      "description": "Smooth and lightweight laptop perfect for WFH",
+      "price": 200,
+      "quantity": 122
+    },
+    {
+      "id": 2,
+      "name": "XY Lap v2",
+      "description": "another Smooth and lightweight laptop perfect for WFH",
+      "price": 203,
+      "quantity": 124
+    },
+    {
+      "name": "CD Lap v3 ",
+      "description": "yet another Smooth and lightweight laptop perfect for WFH",
+      "price": 204,
+      "quantity": 121,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "FG Lap v4",
+      "description": "the only Smooth and lightweight laptop perfect for WFH",
+      "price": 205,
+      "quantity": 122
+    },
+    {
+      "name": "QWQER",
+      "description": "QEQEQEQ",
+      "price": "12",
+      "quantity": "123",
+      "id": 5
+    },
+    {
+      "name": "QWQER2",
+      "description": "QEQEQEQ",
+      "price": "12",
+      "quantity": "123",
+      "id": 6
+    },
+    {
+      "name": "QWQER2",
+      "description": "QEQEQEQ",
+      "price": "12",
+      "quantity": "123",
+      "id": 7
+    },
+    {
+      "name": "HP Omen laptop",
+      "description": "Omen laptop by HP , ista uses this lap.",
+      "price": "75000",
+      "quantity": "1",
+      "id": 8
+    },
+    {
+      "name": "QWQER",
+      "description": "QEQEQEQ",
+      "price": "121",
+      "quantity": "12134",
+      "id": 9
+    },
+    {
+      "name": "XY Lap v2 EDITED",
+      "description": "QEQEE",
+      "price": "34",
+      "quantity": "345",
+      "id": 10
+    }
+  ]
+}

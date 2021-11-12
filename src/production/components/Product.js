@@ -1,7 +1,26 @@
+import {
+    BrowserRouter as Router,
+    Switch, Route, Link,  useHistory
+  } from "react-router-dom"
+  
+  const linkStyle = {
+    
+  };
 
-const Product = ({pid,name,description}) => {
+const Product = ({id,name,description}) => {
+
+    const history = useHistory()
+
+    // const goToDetails= () => {
+    //     console.log("go to details")
+    //     history.push('/4')
+    // }
     return (
+        
         <div className="col-md-4" >
+                        {/* <Router> */}
+                        <Link to={`/${id}`} style={linkStyle}>
+                            {/* <div className="text-center single-content" onClick={goToDetails}> */}
                             <div className="text-center single-content">
                                 <i className="fa fa-code"></i>
                                 <h4>{name}</h4>
@@ -9,10 +28,13 @@ const Product = ({pid,name,description}) => {
                                      {description}
                                 </p>
                                 <p>
-                                    ID: {pid}
+                                    ID: {id}
                                 </p>
-                            </div>    
+                            </div> 
+                        </Link>
+                        {/* </Router>        */}
                         </div>
+        
     )
 }
 
