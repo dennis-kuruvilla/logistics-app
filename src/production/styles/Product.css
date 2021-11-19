@@ -1,0 +1,12 @@
+.product {
+    cursor: pointer;
+    border-right : 1px solid black;
+    border-left : 1px solid black;
+    border-bottom : 1px solid black;
+    border-top : 1px solid black;
+    border-radius: 10px;
+    background-color:  rgb(209, 224, 224);
+    
+    
+
+}

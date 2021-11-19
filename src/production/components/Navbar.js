@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
 
         <nav className="navbar navbar-light" style={{backgroundColor: " #d1e0e0"}}>
-             <Link to="/" className="navbar-brand mx-auto"><h1><strong>.Logistics</strong></h1></Link>
+             <Link to="/" className="navbar-brand mx-auto"><h2><strong>Product Management</strong></h2></Link>
         </nav>
 
     )

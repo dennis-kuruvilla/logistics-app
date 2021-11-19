@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 const ProductForm = ({addProduct}) => {
 
     const [name, setName] = useState('') 
@@ -9,7 +9,7 @@ const ProductForm = ({addProduct}) => {
 
     const createProduct = (event) => {
         event.preventDefault()
-        console.log(name,description,price,quantity)
+        //console.log(name,description,price,quantity)
         const product= {
             name: name,
             description: description,
@@ -24,6 +24,7 @@ const ProductForm = ({addProduct}) => {
       }
 
     return (
+        <div className="container">
         <form onSubmit={createProduct}>
             <div className="form-group">
                 <label htmlFor="formGroupExampleInput">Product Name</label>
@@ -43,6 +44,7 @@ const ProductForm = ({addProduct}) => {
             </div>
             <button type="submit" className="btn btn-primary btn-lg">Add</button>
         </form>
+        </div>
     )
 }
 

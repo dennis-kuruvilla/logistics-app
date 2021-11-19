@@ -52,7 +52,7 @@
     {
       "name": "HP Omen laptop",
       "description": "Omen laptop by HP , ista uses this lap.",
-      "price": "75000",
+      "price": "750000",
       "quantity": "1",
       "id": 8
     },
@@ -62,13 +62,6 @@
       "price": "121",
       "quantity": "12134",
       "id": 9
-    },
-    {
-      "name": "XY Lap v2 EDITED",
-      "description": "QEQEE",
-      "price": "34",
-      "quantity": "345",
-      "id": 10
     }
   ]
 }

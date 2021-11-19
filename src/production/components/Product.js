@@ -1,15 +1,11 @@
+import '../styles/Product.css';
 import {
-    BrowserRouter as Router,
-    Switch, Route, Link,  useHistory
+    
+    Link
   } from "react-router-dom"
   
-  const linkStyle = {
-    
-  };
 
 const Product = ({id,name,description}) => {
-
-    const history = useHistory()
 
     // const goToDetails= () => {
     //     console.log("go to details")
@@ -17,11 +13,11 @@ const Product = ({id,name,description}) => {
     // }
     return (
         
-        <div className="col-md-4" >
+        <div className="col-md-4 " style={{padding: '10px 10px 10px 10px'}}  >
                         {/* <Router> */}
-                        <Link to={`/${id}`} style={linkStyle}>
+                        <Link to={`/${id}`} style={{ textDecoration: 'none',color: 'black' }} >
                             {/* <div className="text-center single-content" onClick={goToDetails}> */}
-                            <div className="text-center single-content">
+                            <div className="text-center single-content product">
                                 <i className="fa fa-code"></i>
                                 <h4>{name}</h4>
                                 <p>

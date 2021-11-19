@@ -4,9 +4,9 @@ import {
   import React, { useState, useEffect} from 'react'
 
   import axios from 'axios'
-import Togglable from "./Togglable"
 
-    const DetailedProduct = ({editProduct}) => {
+
+    const DetailedProduct = ({editProduct,deleteProduct,enableNotification}) => {
 
         
         const [editview,setEditView] = useState(false)
@@ -21,23 +21,27 @@ import Togglable from "./Togglable"
 
         useEffect(() => {           
             getProduct();
+            //following comment is to avoid an unneccesary warning in console
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
         
         const getProduct=()=>{
             axios
-          .get(`http://192.168.1.12:3001/products/${id}`)
+          .get(`api/products/${id}`)
           .then(response => {
-            console.log('got the required prduct')
-            // console.log(response.data)
+            //console.log('got the required prduct', typeof response.data)
+            //console.log(response.data)
             
             setName(response.data.name)
             setDescription(response.data.description)
             setPrice(response.data.price)
             setQuantity(response.data.quantity)
           })
+          .catch(err=>
+            enableNotification("Unable to find the product","alert-danger"))
         }
 
-        // console.log(name,description)
+        // //console.log(name,description)
 
         const toggleEditView=(flag)=>
         {
@@ -56,9 +60,22 @@ import Togglable from "./Togglable"
             toggleEditView(false)
         }
 
+        const deletingProduct = (event) =>{
+            var answer = window.confirm("Are you sure you want to delete this product?");
+            if (answer) {
+                deleteProduct(id)
+            }
+                    }
+
 
         if(editview){
         return(
+
+            <div className="container">
+
+            <div align="right">
+                <button className="btn btn-danger btn-sm" onClick={deletingProduct}>Delete</button>
+            </div>
 
             <form className="text-center" onSubmit={editingProduct}>
             <div className="form-group">
@@ -79,7 +96,8 @@ import Togglable from "./Togglable"
             </div>
             <button type="submit" className="btn btn-primary btn-lg">Save</button>
             <button onClick={()=>toggleEditView(false)} className="btn btn-secondary btn-lg">Discard</button>
-        </form>
+            </form>
+            </div>
         )
         }
 

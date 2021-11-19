@@ -1,8 +1,4 @@
 import Product from "./Product"
-import {
-    BrowserRouter as Router,
-    Switch, Route, Link
-  } from "react-router-dom"
 
 const Products = ({products}) => {
     return (
@@ -13,7 +9,7 @@ const Products = ({products}) => {
 
             <section id="content-section1" className="content-section1">
                 <div className="container">
-                    <div className="row">
+                    <div className="row" >
                        {products.map(product => 
                             <Product key= {product.id} id={product.id} name={product.name} description={product.description}/>
 
