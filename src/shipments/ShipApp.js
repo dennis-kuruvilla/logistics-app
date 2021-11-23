@@ -5,7 +5,9 @@ import PlaceInput from "./Components/PlaceInput"
 
 const ShipApp = () => {
 
-       
+        // const [address,setAddress] = useState('')
+
+        const changeAddress = () => {}
     
         return(       
         <div className="container" id="ShipmentPage">

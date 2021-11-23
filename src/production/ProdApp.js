@@ -30,7 +30,7 @@ const ProdApp = () => {
 
     // const baseURL = "https://agile-sea-14605.herokuapp.com/api/products"
 
-    const baseURL= process.env.REACT_APP_PRODUCTS_SERVER
+    const baseURL= process.env.REACT_APP_PRODUCTS_SERVER || '/api/products'
 
 
     
@@ -118,7 +118,7 @@ const ProdApp = () => {
 
     return (
         <div>
-        <Router>
+        
         {/* <Navbar/> */}
         {/* <MainNavbar/> */}
         <br/>
@@ -146,7 +146,7 @@ const ProdApp = () => {
           </Route>
 
         </Switch>
-        </Router>
+        
         <br/>
       </div>
     )

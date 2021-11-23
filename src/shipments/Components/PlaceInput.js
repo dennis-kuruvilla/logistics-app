@@ -4,11 +4,11 @@ import PlacesAutocomplete, {
     getLatLng,
   } from 'react-places-autocomplete';
 
-const PlaceInput = ({address,setAddress}) => {
-    // const [address,setAddress] = useState('')
+const PlaceInput = () => {
+    const [address,setAddress] = useState('')
 
     const handleChange = address => {
-        setAddress(address );
+        setAddress(address);
       };
      
       const handleSelect = address => {

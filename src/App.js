@@ -2,6 +2,9 @@ import React from "react";
 import MainNavbar from "./Components/MainNavbar";
 import ProdApp from "./production/ProdApp";
 import ShipApp from "./shipments/ShipApp";
+import {
+    BrowserRouter as Router,
+  } from "react-router-dom"
 
 import scriptLoader from 'react-async-script-loader'
 
@@ -10,11 +13,13 @@ const App = ({isScriptLoaded,isScriptLoadSucceed}) => {
    
     if(isScriptLoaded && isScriptLoadSucceed){ 
         return(
+            <Router>
             <React.Fragment>
             <MainNavbar/>
             <ProdApp/>
             <ShipApp/>
             </React.Fragment>
+            </Router>
         )
     }
     else{

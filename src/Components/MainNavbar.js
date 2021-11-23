@@ -1,16 +1,22 @@
+import {  
+  Link
+} from "react-router-dom"
 
 import logo from "../Assets/truck1.png"
-import "../Styles/navbar.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; //importing react-bootstrap in this component because it seems to mess up the classical bootstrap in other components
 import {Navbar,Container,Nav,NavDropdown} from "react-bootstrap"
+import "../Styles/navbar.css"
 
 const MainNavbar = () => {
+
+  const LinkStyle={textDecoration: 'none',color: 'black' }
 
     return(
    
         <Navbar  expand="lg" style={{backgroundColor: " #d1e0e0"}}>
-  <Container>
-  <Navbar.Brand href="/" className="NavbarTitle mx-auto">
+  <Container id="navbar">
+  <Navbar.Brand  className="NavbarTitle mx-auto">
+    <Link to="/" style={LinkStyle}>
         <img
           alt=""
           src={logo}
@@ -19,16 +25,17 @@ const MainNavbar = () => {
           className="d-inline-block align-top"
         />{''}
       <h1>EZ-Chain</h1>
+      </Link>
       </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/Products">Product Management</Nav.Link>
-        <Nav.Link href="/Shipments">Shipments</Nav.Link>
+        <Nav.Link><Link to="/" style={LinkStyle}>Home</Link></Nav.Link>
+        <Nav.Link><Link to="/Products" style={LinkStyle}>Product Management</Link></Nav.Link>
+        <Nav.Link><Link to="/Shipments" style={LinkStyle}>Shipments</Link></Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+          <NavDropdown.Item to="#action/3.1">Action</NavDropdown.Item>
+          <NavDropdown.Item to="#action/3.2">Another action</NavDropdown.Item>
           
         </NavDropdown>
       </Nav>
