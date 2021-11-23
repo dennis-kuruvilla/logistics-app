@@ -27,7 +27,7 @@ import {
         
         const getProduct=()=>{
             axios
-          .get(`api/products/${id}`)
+          .get(`${process.env.REACT_APP_PRODUCTS_SERVER}/${id}`)
           .then(response => {
             //console.log('got the required prduct', typeof response.data)
             //console.log(response.data)

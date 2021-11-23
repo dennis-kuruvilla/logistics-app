@@ -15,7 +15,7 @@ const Product = ({id,name,description}) => {
         
         <div className="col-md-4 " style={{padding: '10px 10px 10px 10px'}}  >
                         {/* <Router> */}
-                        <Link to={`/${id}`} style={{ textDecoration: 'none',color: 'black' }} >
+                        <Link to={`Products/${id}`} style={{ textDecoration: 'none',color: 'black' }} >
                             {/* <div className="text-center single-content" onClick={goToDetails}> */}
                             <div className="text-center single-content product">
                                 <i className="fa fa-code"></i>

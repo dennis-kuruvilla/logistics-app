@@ -12,6 +12,7 @@ import ProductForm from './components/ProductForm'
 import DetailedProduct from './components/DetailedProduct'
 import Search from './components/Search'
 import Notification from './components/Notification'
+import MainNavbar from '../Components/MainNavbar'
 
 import axios from 'axios'
 
@@ -25,7 +26,11 @@ const ProdApp = () => {
 
     // const baseURL="http://192.168.1.12:3002/api/products"
 
-    const baseURL="/api/products"
+    // const baseURL="/api/products"
+
+    // const baseURL = "https://agile-sea-14605.herokuapp.com/api/products"
+
+    const baseURL= process.env.REACT_APP_PRODUCTS_SERVER
 
 
     
@@ -38,7 +43,7 @@ const ProdApp = () => {
           .then(response => {
             //console.log('promise fulfilled')
             setProducts(response.data)
-          })
+          }) // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
       //console.log('rendered', products.length, 'products')
 
@@ -114,7 +119,8 @@ const ProdApp = () => {
     return (
         <div>
         <Router>
-        <Navbar/>
+        {/* <Navbar/> */}
+        {/* <MainNavbar/> */}
         <br/>
         
         {notification && <Notification text={notification} type={notificationType}/>}
@@ -123,13 +129,13 @@ const ProdApp = () => {
         {/* <h4 onClick={goToDetails}>go to 3</h4> */}
         <Switch>
           
-          <Route exact path="/:id" >
+          <Route exact path="/Products/:id" >
             <br/>
             <DetailedProduct editProduct={editProduct} deleteProduct={deleteProduct} enableNotification={enableNotification}/>
           </Route>
 
           {/* <Route path={["/home", "/products","/"]}> */}
-          <Route exact path="/" > 
+          <Route exact path="/Products" > 
             <Search products={products}/>
             <Divider/>
             <Products products={products}/>
