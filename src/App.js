@@ -28,4 +28,4 @@ const App = ({isScriptLoaded,isScriptLoadSucceed}) => {
 
 
 }
-export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}&libraries=places`])(App)
+export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}&libraries=places,directions`])(App)

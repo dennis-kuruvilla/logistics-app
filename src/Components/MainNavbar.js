@@ -30,9 +30,9 @@ const MainNavbar = () => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link><Link to="/" style={LinkStyle}>Home</Link></Nav.Link>
-        <Nav.Link><Link to="/Products" style={LinkStyle}>Product Management</Link></Nav.Link>
-        <Nav.Link><Link to="/Shipments" style={LinkStyle}>Shipments</Link></Nav.Link>
+        <Nav.Link as={Link} to="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/Products">Product Management</Nav.Link>
+        <Nav.Link as={Link} to="/Shipments">Shipments</Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
           <NavDropdown.Item to="#action/3.1">Action</NavDropdown.Item>
           <NavDropdown.Item to="#action/3.2">Another action</NavDropdown.Item>

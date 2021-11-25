@@ -1,20 +1,24 @@
-import { useState } from 'react';
+
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
   } from 'react-places-autocomplete';
 
-const PlaceInput = () => {
-    const [address,setAddress] = useState('')
+const PlaceInput = ({address,changeAddress,changeCoordinates,type}) => {
+    // const [address,setAddress] = useState('')
 
     const handleChange = address => {
-        setAddress(address);
+        changeAddress(address,type);
       };
      
       const handleSelect = address => {
+        changeAddress(address,type)
         geocodeByAddress(address)
           .then(results => getLatLng(results[0]))
-          .then(latLng => console.log('Success', latLng))
+          .then(latLng => {
+            console.log('Success', latLng)
+            changeCoordinates(latLng,type)
+            })
           .catch(error => console.error('Error', error));
       };
      

@@ -1,10 +1,9 @@
 import React, { useState, useEffect} from 'react'
 import {
-  BrowserRouter as Router,
   Switch, Route
 } from "react-router-dom"
 
-import Navbar from "./components/Navbar"
+// import Navbar from "./components/Navbar"
 import Products from "./components/Products"
 import Divider from './components/Divider'
 import Togglable from './components/Togglable'
@@ -12,7 +11,7 @@ import ProductForm from './components/ProductForm'
 import DetailedProduct from './components/DetailedProduct'
 import Search from './components/Search'
 import Notification from './components/Notification'
-import MainNavbar from '../Components/MainNavbar'
+// import MainNavbar from '../Components/MainNavbar'
 
 import axios from 'axios'
 
