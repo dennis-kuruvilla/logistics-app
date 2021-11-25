@@ -4,6 +4,8 @@ import Select from 'react-select'
 import Divider from '../../production/components/Divider'
 import '../Styles/AddProductForm.css'
 
+import axios from 'axios'
+
 const ShipmentForm = () =>{
 
     const [fromaddress,setFromAddress] = useState('')
@@ -13,20 +15,32 @@ const ShipmentForm = () =>{
         const [distance,setDistance] = useState('')
         const [fromDC,setFromDC] = useState('EZ-Ship WareHouse')
         const [toWSLR,setToWSLR] = useState('')
+        //use carrier.value to access the actual value. to avoid messing up 'select' component
         const [carrier,setCarrier] = useState('')
         const [reqproducts,setReqProducts] = useState([{
-            ProductID: 0,
+            Product: '',
             RequiredQuantity: 0
         }])
+        const [products, setProducts] = useState([])
         
+        const google = window.google;
+        const productsURL= process.env.REACT_APP_PRODUCTS_SERVER || '/api/products'
 
+        useEffect(() => {
+            axios
+              .get(productsURL)
+              .then(response => {
+                //console.log('promise fulfilled')
+                setProducts(response.data)
+              }) // eslint-disable-next-line react-hooks/exhaustive-deps
+          }, [])
 
         useEffect(() => {
             getDistance()    
               // eslint-disable-next-line react-hooks/exhaustive-deps
           }, [fromcord,tocord])
 
-        const google = window.google;
+        
         
         const options = [
             { value: 'ABC', label: 'ABS Logistics- Super Fast Delivery' },
@@ -34,6 +48,17 @@ const ShipmentForm = () =>{
             { value: 'XYZ', label: 'XYZ Logistics- Normal Delivery' }
           ]
 
+        //Options data for products, dont waste time understanding this, too compliated. refere to the below 2 links for some help
+        const productsOptions = products.map((product)=>{
+            return{
+                value: product.objId,
+                label: product.name,
+            }
+        })
+
+        console.log("reqproducts:",reqproducts)
+        // console.log("carrier:",carrier)
+        // console.log("products options:",productsOptions)
         //   console.log("InputFields", reqproducts);
         //   console.log("towslr:",toWSLR)
         // console.log("from:",fromaddress)
@@ -100,7 +125,11 @@ const ShipmentForm = () =>{
             }
         }
         
-          const handleChangeInput = (id, event) => {
+        //REACT-SELECT TUTORIAL-
+        //https://codesandbox.io/s/youthful-drake-wpoqu?file=/src/SelectFunctionalComponent.js
+        //DYNAMIC FORMS TUTORIAL-
+        //https://github.com/candraKriswinarto/dymanic-form/blob/master/src/App.js
+        const handleChangeInput = (id, event) => {
             const newreqproducts = reqproducts.map((product,i) => {
               if(id === i) {
                 product[event.target.name] = event.target.value
@@ -109,11 +138,24 @@ const ShipmentForm = () =>{
             })
             
             setReqProducts(newreqproducts);
-          }
+        }
+
+        //dont bother understanding this functions, refer the above 2 links for help
+        const handleChangeInput2 = (selectedoption,action) => {
+            console.log("selectedoption,action,i:",selectedoption,action)
+            const newreqproducts = reqproducts.map((product,i) => {
+              if(action.name == i) {
+                product["Product"] = selectedoption
+              }
+              return product;
+            })
+            console.log("newproduct:",newreqproducts)
+            setReqProducts(newreqproducts);
+        }
         
           const handleAddFields = (e) => {
               e.preventDefault()
-            setReqProducts([...reqproducts, { ProductID: 0, RequiredQuantity: 0 }])
+            setReqProducts([...reqproducts, { Product: 0, RequiredQuantity: 0 }])
           }
         
           const handleRemoveFields = (id,event) => {
@@ -174,8 +216,9 @@ const ShipmentForm = () =>{
             <div className="form-row ProductForm">
                
                 <div className="form-group col-md-3">
-                <label htmlFor="inputfromDC">Product ID</label>
-                <input value={inputField.ProductID} onChange={event => handleChangeInput(i, event)} name="ProductID" className="form-control form-control-sm"type="text" />
+                <label htmlFor="inputfromDC">Product</label>
+                {/* <input value={inputField.Product} onChange={event => handleChangeInput(i, event)} name="Product" className="form-control form-control-sm"type="text" /> */}
+                <Select options={productsOptions} onChange={(selectedoption,action,i)=>handleChangeInput2(selectedoption,action,i)} value={reqproducts[i].Product} name={i}/>
                 </div>
                 <div className="form-group col-md-3">
                 <label htmlFor="inputtoWSLR">Required Quantity</label>
@@ -191,8 +234,9 @@ const ShipmentForm = () =>{
         )})}
         
         <div className="text-center">
-        <button className="btn btn-primary"  onClick={handleAddFields}>Add Another Product</button>
+        <button className="btn btn-primary btn-sm"  onClick={handleAddFields}>Add Another Product</button>
         </div>
+        <Divider/>
         <br/>
         <br/>
 

@@ -61,7 +61,7 @@ const Search = (products) => {
 
          {suggestions && suggestions.map((suggestion,i) =>     
             <div key={i} className="col-md-12 justify-content-md-center suggestion" >   
-            <Link to={`/${suggestion.id}`} style={{ textDecoration: 'none',color: 'black' }}>    
+            <Link to={`Products/${suggestion.id}`} style={{ textDecoration: 'none',color: 'black' }}>    
                 <h5>{suggestion.name}</h5>
                 
                 <p>{suggestion.description}</p>
