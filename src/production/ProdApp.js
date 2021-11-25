@@ -121,6 +121,7 @@ const ProdApp = () => {
         {/* <Navbar/> */}
         {/* <MainNavbar/> */}
         <br/>
+        <br/>
         
         {notification && <Notification text={notification} type={notificationType}/>}
         

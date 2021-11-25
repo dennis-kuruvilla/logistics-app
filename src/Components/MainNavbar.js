@@ -13,7 +13,7 @@ const MainNavbar = () => {
 
     return(
    
-        <Navbar  expand="lg" style={{backgroundColor: " #d1e0e0"}}>
+        <Navbar  className=" fixed-top border-bottom border-dark" expand="lg" style={{backgroundColor: " #d1e0e0"}}>
   <Container id="navbar">
   <Navbar.Brand  className="NavbarTitle mx-auto">
     <Link to="/" style={LinkStyle}>

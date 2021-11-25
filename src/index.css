@@ -1,6 +1,6 @@
 #root {
   margin: 0;
-  font-family: 'Segoe UI','Roboto', 
+  font-family: 'Poppins','Segoe UI','Roboto', 
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11,3 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* following padding is required for the fixed navbar to work */
+body { padding-top: 100px; }
