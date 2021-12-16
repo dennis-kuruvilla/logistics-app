@@ -2,6 +2,7 @@ import React from "react";
 import MainNavbar from "./Components/MainNavbar";
 import ProdApp from "./production/ProdApp";
 import ShipApp from "./shipments/ShipApp";
+import Home from "./Components/Home";
 import {
     BrowserRouter as Router,
   } from "react-router-dom"
@@ -16,6 +17,7 @@ const App = ({isScriptLoaded,isScriptLoadSucceed}) => {
             <Router>
             <React.Fragment>
             <MainNavbar/>
+            <Home/>
             <ProdApp/>
             <ShipApp/>
             </React.Fragment>

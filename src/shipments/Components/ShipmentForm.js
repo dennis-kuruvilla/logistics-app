@@ -3,6 +3,9 @@ import PlaceInput from "./PlaceInput"
 import Select from 'react-select'
 import Divider from '../../production/components/Divider'
 import '../Styles/AddProductForm.css'
+import { ADD_SHIPMENT ,ADD_PERSON} from '../../Queries'
+import { gql, useMutation } from '@apollo/client'
+import {NotificationManager} from 'react-notifications';
 
 import axios from 'axios'
 
@@ -22,6 +25,10 @@ const ShipmentForm = () =>{
             RequiredQuantity: 0
         }])
         const [products, setProducts] = useState([])
+        const [googleData,setgoogleData] = useState({})
+
+        const [ addShipment ] = useMutation(ADD_SHIPMENT)
+        const [ addPerson ] = useMutation(ADD_PERSON)
         
         const google = window.google;
         const productsURL= process.env.REACT_APP_PRODUCTS_SERVER || '/api/products'
@@ -56,7 +63,7 @@ const ShipmentForm = () =>{
             }
         })
 
-        console.log("reqproducts:",reqproducts)
+        // console.log("reqproducts:",reqproducts)
         // console.log("carrier:",carrier)
         // console.log("products options:",productsOptions)
         //   console.log("InputFields", reqproducts);
@@ -111,6 +118,7 @@ const ShipmentForm = () =>{
 
                 directionsService.route(request, function (result, status) {
                     if (status === google.maps.DirectionsStatus.OK) {
+                        setgoogleData(result)
             
                         //Get distance and time
                         const dist=result.routes[0].legs[0].distance.text
@@ -142,14 +150,14 @@ const ShipmentForm = () =>{
 
         //dont bother understanding this functions, refer the above 2 links for help
         const handleChangeInput2 = (selectedoption,action) => {
-            console.log("selectedoption,action,i:",selectedoption,action)
+            // console.log("selectedoption,action,i:",selectedoption,action)
             const newreqproducts = reqproducts.map((product,i) => {
               if(action.name == i) {
                 product["Product"] = selectedoption
               }
               return product;
             })
-            console.log("newproduct:",newreqproducts)
+            // console.log("newproduct:",newreqproducts)
             setReqProducts(newreqproducts);
         }
         
@@ -170,12 +178,47 @@ const ShipmentForm = () =>{
         
         
         
+        const createShipment = (e) => {
+            e.preventDefault()
+            const product1 = reqproducts.map(product=>{
+                return {
+                    ProductDetails: product.Product.value,
+                    RequiredQuantity: product.RequiredQuantity
+                }
+            })
+            const shipment={
+                status: 'Active',
+                age: '1',
+                fromAddr: fromaddress,
+                fromCord: fromcord,
+                fromDC: fromDC,
+                toAddr: toaddress,
+                toCord: tocord,
+                toWSLR: toWSLR,
+                carrier: carrier.value,
+                distance: distance,
+                // googleData: googleData,
+                Products: product1
+            }
 
+            console.log("shipment:",shipment)
+            // const graphql_query = jsonToGraphQLQuery(shipment)
+            // console.log(graphql_query)
+            addShipment({  variables: {shipment} })
+            .then(result=>console.log(result))
+            .then(()=>NotificationManager.success('The shipment has been scheduled successfully', 'Shipment Scheduled'))
+            .catch(err=>{
+                console.log("ERROR:",err)
+                NotificationManager.error('Unable to schedule shipment. Please make sure the format is correct and the locations are connected by road', 'Error')
+            })
+            // addPerson({  variables: "hai" })
+            // .catch(err=>console.log("ERROR:",err))
+        }
 
         return(       
-        <div className="container" id="ShipmentPage" >
+        <div className="container" id="ShipmentFormPage" >
         
-        <form >
+        <form onSubmit={createShipment} >
         <div className="form-row">
             <div className="form-group col-md-4">
             <label htmlFor="inputfromDC">From DC</label>
@@ -234,14 +277,16 @@ const ShipmentForm = () =>{
         )})}
         
         <div className="text-center">
-        <button className="btn btn-primary btn-sm"  onClick={handleAddFields}>Add Another Product</button>
+        <button className="btn btn-secondary btn-sm"  onClick={handleAddFields}>Add Another Product</button>
         </div>
         <Divider/>
-        <br/>
-        <br/>
-
+        
+        <div className="text-center">
+        <button className="btn btn-primary " type="submit">Schedule Shipment</button>.
+        </div>
         </form>
-                
+        <br/>
+        
             </div>
 
         )

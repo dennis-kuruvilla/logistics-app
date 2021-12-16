@@ -2,6 +2,10 @@
 import React from 'react'
 import "./Styles/ShipApp.css"
 import ShipmentForm from './Components/ShipmentForm'
+import {
+    Switch, Route
+  } from "react-router-dom"
+
 
 
 
@@ -9,9 +13,11 @@ const ShipApp = () => {
 
         
         return(       
-
-            <ShipmentForm/>
-       
+            <Switch>
+                <Route exact path="/Shipments">
+                    <ShipmentForm/>
+                </Route>
+            </Switch>
         )
 }
 

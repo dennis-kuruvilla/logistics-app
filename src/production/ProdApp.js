@@ -11,6 +11,7 @@ import ProductForm from './components/ProductForm'
 import DetailedProduct from './components/DetailedProduct'
 import Search from './components/Search'
 import Notification from './components/Notification'
+import {NotificationManager} from 'react-notifications';
 // import MainNavbar from '../Components/MainNavbar'
 
 import axios from 'axios'
@@ -56,18 +57,15 @@ const ProdApp = () => {
       .then(response => {
         setProducts(products.concat(response.data))
         //console.log("succesfully added")
-        enableNotification("Product added successfully!","alert-success")
+        // enableNotification("Product added successfully!","alert-success")
+        NotificationManager.success('Product added successfully!', 'Add successfull')
       })
       .catch(err=> {
         //console.log(err)
-        enableNotification("Unable to add product, please make sure the format is correct","alert-danger")
+        // enableNotification("Unable to add product, please make sure the format is correct","alert-danger")
+        NotificationManager.error('Unable to add product, please make sure the format is correct', 'Error')
       })
     }
-
-    // const goToDetails= () => {
-    //   //console.log("go to details")
-    //   history.push('/4')
-    // }\
 
     const editProduct = (editedproduct,id1) => {
       //console.log(editedproduct,id)
@@ -82,11 +80,14 @@ const ProdApp = () => {
         //converted id to int
 
         setProducts(products.map(product => product.id !== id ? product : response.data))
-        enableNotification("Product edited successfully!","alert-success")
+        // enableNotification("Product edited successfully!","alert-success")
+        NotificationManager.success('The changes have been saved', 'Edit Successful')
+        
       })
       .catch(err=>{
         //console.log(err)
-        enableNotification("Unable to edit product","alert-danger")
+        // enableNotification("Unable to edit product","alert-danger")
+        NotificationManager.error('Unable to edit product', 'Error')
       })
     }
 
@@ -97,10 +98,12 @@ const ProdApp = () => {
       axios.delete(url)
       .then(response=>{
         setProducts(products.filter(n => n.id !== id))
-        enableNotification("Deleted Successfully!","alert-success")
+        // enableNotification("Deleted Successfully!","alert-success")
+        NotificationManager.success('The product is deleted from the database', 'Delete Successful')
       })
       .catch(err=>{
-        enableNotification("Unable to delete product","alert-danger")
+        // enableNotification("Unable to delete product","alert-danger")
+        NotificationManager.error('Unable to delete product', 'Error')
         //console.log(err)
       })
     }
